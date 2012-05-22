@@ -1,0 +1,24 @@
+/* CSS declarations go here */
+.resource {
+	margin-bottom: 1px;
+	padding: 5px;
+	border: 1px solid #666;
+	background-color: #DDD;
+}
+
+.accordion-inner {
+	padding: 1px;
+}
+
+.accordion-heading .accordion-toggle {
+	display: inline-block;
+}
+
+.add_resource {
+	margin-right: 15px;
+	margin-top: 5px;
+}
+
+.resource_description {
+	padding: 5px;
+}

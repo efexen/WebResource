@@ -1,0 +1,99 @@
+<head>
+  <title>webresource</title>
+</head>
+
+<body>
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="/">Web Resource</a>
+			</div>
+		</div>
+	</div>
+	<div class="container" id="container">
+  	{{> webresource}}
+	</div>
+
+	<div class="modal hide" id="addResource">
+		<div class="modal-header">
+			
+			<h3>Add Resource</h3>
+		</div>
+		<div class="modal-body">
+			<form>
+				<input type="hidden" id="newfor" />
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="newname">Name: </label>
+						<div class="controls">
+							<input type="text" class="input-xlarge" id="newname" />
+						</div>
+						<label class="control-label" for="newdescription">Description: </label>
+						<div class="controls">
+							<textarea class="input-xlarge" id="newdescription" rows="5"></textarea>
+						</div>
+						<label class="control-label" for="newurl">Website: </label>
+						<div class="controls">
+							<input type="text" class="input-xlarge" id="newurl" value="http://" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+		</div>
+		<div class="modal-footer">
+			<a href="#" data-dismiss="modal" class="btn">Cancel</a>
+			<a href="#" data-dismiss="modal" id="btnAddResource" class="btn btn-primary">Add</a>
+		</div>
+	</div>
+</body>
+
+<template name="webresource">
+  <div class="row">
+  	<div class="span9 offset2">
+  		<h3>Resources</h3>
+  	</div>
+  </div>
+  <br />
+  <div class="row">
+  	<div class="span9 offset2">
+  		<div class="accordion" id="categories">
+  			{{#each categories}}
+  				{{> category}}
+  			{{/each}}
+  		</div>
+  	</div>
+  </div>
+  <div class="row">
+  	<div class="span9 offset2">
+  		<form class="form-inline">
+  			<input type="text" class="input-xlarge" id="newcategoryname">
+  			<button class="btn btn-primary" id="addnewcategory">Add Category</button>
+  		</form>
+  	</div>
+  </div>
+</template>
+
+<template name="category">
+	<div class="accordion-group" data-category="{{_id}}">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#category_{{_id}}"><span class="badge">{{child_count}}</span> {{name}}</a>
+			<a href="#addResource" data-toggle="modal" class="pull-right add_resource">+</a>
+		</div>
+		<div id="category_{{_id}}" class="accordion-body">
+			<div class="accordion-inner">
+				{{#each resources}}
+					{{> resource}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="resource">
+	<div class="resource">
+		<h4>{{name}}</h4>
+		<p class="resource_description">{{description}}</p>
+		<p><a href="{{url}}">{{url}}</a></p>
+	</div>
+</template>
